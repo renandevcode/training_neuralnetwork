@@ -4,16 +4,14 @@ from matplotlib import pyplot as plt
 
 data=pd.read_csv('train.csv')
 
-data.head()
-
 data = np.array(data)
 m, n = data.shape
 np.random.shuffle(data) # shuffle before splitting into dev and training sets
 
 data_dev = data[0:1000].T
-Y_dev = data_dev[0]
-X_dev = data_dev[1:n]
-X_dev = X_dev / 255.
+Y_dev = data_dev[0]          # rotulo da imagem
+X_dev = data_dev[1:n]        # valores do pixel
+X_dev = X_dev / 255.         #transformação para valores entre 0 e 1
 
 data_train = data[1000:m].T
 Y_train = data_train[0]
@@ -69,7 +67,7 @@ def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
     return dW1, db1, dW2, db2
 
 
-def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha):
+def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha): # alpha=learning rate
     W1 = W1 - alpha * dW1
     b1 = b1 - alpha * db1
     W2 = W2 - alpha * dW2
@@ -120,3 +118,12 @@ test_prediction(0, W1, b1, W2, b2)
 test_prediction(1, W1, b1, W2, b2)
 test_prediction(2, W1, b1, W2, b2)
 test_prediction(3, W1, b1, W2, b2)
+'''
+Forward: “O que eu acho que é?”
+
+Loss: “Quanto errei?”
+
+Backward: “Quem causou o erro?”
+
+Gradiente: “Quanto corrigir cada peso?”
+'''
