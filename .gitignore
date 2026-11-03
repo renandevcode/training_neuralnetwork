@@ -1,0 +1,15 @@
+# Ambiente virtual e caches Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Configurações locais de IDE e sistema
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Saídas de cada execução; exemplos do README ficam em docs/images/
+predictions/
